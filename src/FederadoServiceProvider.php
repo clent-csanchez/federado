@@ -12,7 +12,7 @@ class FederadoServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+
     }
 
     /**

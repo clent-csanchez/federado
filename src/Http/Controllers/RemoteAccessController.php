@@ -38,7 +38,6 @@ class RemoteAccessController {
         
         $url = config('federado.http.url');
 
-        dd($headers,$url);
         try {
             $response = $this->client->post($url,$headers);
             return json_decode($response->getBody())->user_secret;
@@ -67,10 +66,20 @@ class RemoteAccessController {
 
     private function getLocalUser(string $user_secret)
     {
+
+        $project = config('federado.bechmark_project_id');
+
+        if (is_null($project)){
+            return DB::table('users')
+            ->join('tb_secret_user', 'users.id', '=', 'tb_secret_user.user_id')
+            ->where('tb_secret_user.secret', '=', $this->getUserSecret($request))
+            ->first();
+        }
+
         return DB::table('users')
-            ->join('tb_user_secret', 'users.id', '=', 'tb_user_secret.user_id')
-            // ->where('project' ,self::CARDIF)
-            ->where('tb_user_secret.secret', '=', $user_secret)
+            ->join('tb_secret_user', 'users.id', '=', 'tb_secret_user.user_id')
+            ->where('project' ,$project)
+            ->where('tb_secret_user.secret', '=', $user_secret)
             ->first();
     }
 }

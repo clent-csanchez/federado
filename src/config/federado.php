@@ -13,7 +13,6 @@ return [
      */
     'sso_plataform_id' => env('SSO_PLATAFORM_ID'),
 
-
     /**
      * peticion http
      */
@@ -24,5 +23,11 @@ return [
     /**
      * declarar ruta de redireccion
      */
-    'redirect' => '/home'
+    'redirect' => '/home',
+
+    /**
+     * filtro de proyectos para benchmarks
+     */
+    'bechmark_project_id' => env("BENCHMARK_PROJECT_ID",null)
+
 ];  
