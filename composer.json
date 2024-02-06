@@ -1,0 +1,26 @@
+{
+    "name": "clent/federado",
+    "description": "Provee a tu sistema un servicio de inicio de sesion remoto desde el acceso federado",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Clent\\Federado\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Clent\\Federado\\FederadoServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Carlos Sanchez",
+            "email": "carlosedusj12@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
