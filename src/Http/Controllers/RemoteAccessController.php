@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\{DB,Auth};
 
 class RemoteAccessController {
     
-    public function __construct(
-        protected Client $client 
-    )
+    protected $client;
+    
+    public function __construct()
     {
-        
+        $this->client = new Client();
     }
 
     public function __invoke(Request $request)
@@ -29,7 +29,11 @@ class RemoteAccessController {
 
         $redirect_url  = config('federado.redirect');
 
-        return $redirect_url;
+        if ($redirect_url){
+            return redirect($redirect_url);
+        }
+        
+        return redirect()->intended();
     }
 
     private function getUserSecret($request)
