@@ -75,15 +75,15 @@ class RemoteAccessController {
 
         if (is_null($project)){
             return DB::table('users')
-            ->join('tb_secret_user', 'users.id', '=', 'tb_secret_user.user_id')
-            ->where('tb_secret_user.secret', '=', $user_secret)
+            ->join('secret_user', 'users.id', '=', 'secret_user.user_id')
+            ->where('secret_user.secret', '=', $user_secret)
             ->first();
         }
 
         return DB::table('users')
-            ->join('tb_secret_user', 'users.id', '=', 'tb_secret_user.user_id')
+            ->join('secret_user', 'users.id', '=', 'secret_user.user_id')
             ->where('project' ,$project)
-            ->where('tb_secret_user.secret', '=', $user_secret)
+            ->where('secret_user.secret', '=', $user_secret)
             ->first();
     }
 }
