@@ -32,7 +32,7 @@ class RemoteAccessController {
         if ($redirect_url){
             return redirect($redirect_url);
         }
-        
+
         return redirect()->intended();
     }
 
@@ -76,7 +76,7 @@ class RemoteAccessController {
         if (is_null($project)){
             return DB::table('users')
             ->join('tb_secret_user', 'users.id', '=', 'tb_secret_user.user_id')
-            ->where('tb_secret_user.secret', '=', $this->getUserSecret($request))
+            ->where('tb_secret_user.secret', '=', $user_secret)
             ->first();
         }
 
