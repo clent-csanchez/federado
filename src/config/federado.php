@@ -23,7 +23,7 @@ return [
     /**
      * declarar ruta de redireccion
      */
-    'redirect' => '/home',
+    'redirect' => env('REDIRECT_ROUTE','/home'),
 
     /**
      * filtro de proyectos para benchmarks
