@@ -16,7 +16,7 @@ Puedes instalar este paquete a través de Composer. Asegúrate de tener Composer
    "repositories": [
        {
            "type": "vcs",
-            "url":   "https://github.com/clent-repo/core-acceso-federado"
+            "url":   "git@github.com:clent-repo/core-acceso-federado.git"
        }
    ]
 
