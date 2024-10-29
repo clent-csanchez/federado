@@ -50,6 +50,7 @@ Puedes instalar este paquete a través de Composer. Asegúrate de tener Composer
         APP_SECRET="clent_acceso_federado.tb_plataforms.secret|clent_acceso_federado.tb_plataforms.name"
         SSO_SECRET="aqui va la contrase;a del accso federeado"
         SSO_PLATAFORM_ID=clent_acceso_federado.tb_plataforms.id
+        SSO_URL=url del acceso federado ej. https://qa.accesofederado.clent.cl
         REDIRECT_ROUTE=ruta donde quieres acceder al hacer login en acceso federado ej /home
     ```
     Reemplazando por supuesto por sus valores correspondiente segun la convencion escrita anteriormente.

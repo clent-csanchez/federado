@@ -17,7 +17,7 @@ return [
      * peticion http
      */
     'http' => [
-        'url' => env("ACCESO_FEDERADO_URL",'http://testing.clent.cl:8058/api/user'),
+        'url' => env("SSO_URL",'http://testing.clent.cl:8058/api/user'),
     ],
 
     /**
