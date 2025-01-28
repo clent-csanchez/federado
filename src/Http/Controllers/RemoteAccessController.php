@@ -70,20 +70,26 @@ class RemoteAccessController {
 
     private function getLocalUser(string $user_secret)
     {
-
         $project = config('federado.bechmark_project_id');
+        
+        $connection = DB::connection();
+        $prefix = $connection->getTablePrefix();
 
-        if (is_null($project)){
-            return DB::table('users')
-            ->join('secret_user', 'users.id', '=', 'secret_user.user_id')
-            ->where('secret_user.secret', '=', $user_secret)
-            ->first();
+        if (empty($prefix)) {
+            $prefix = 'tb_';
         }
 
-        return DB::table('users')
-            ->join('secret_user', 'users.id', '=', 'secret_user.user_id')
-            ->where('project' ,$project)
-            ->where('secret_user.secret', '=', $user_secret)
+        if (is_null($project)) {
+            return DB::table($prefix . 'users')
+                ->join($prefix . 'secret_user', $prefix . 'users.id', '=', $prefix . 'secret_user.user_id')
+                ->where($prefix . 'secret_user.secret', '=', $user_secret)
+                ->first();
+        }
+
+        return DB::table($prefix . 'users')
+            ->join($prefix . 'secret_user', $prefix . 'users.id', '=', $prefix . 'secret_user.user_id')
+            ->where('project', $project)
+            ->where($prefix . 'secret_user.secret', '=', $user_secret)
             ->first();
     }
 }
