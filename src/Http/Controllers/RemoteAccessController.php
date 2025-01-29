@@ -73,12 +73,8 @@ class RemoteAccessController {
         $project = config('federado.bechmark_project_id');
         
         $connection = DB::connection();
-        $prefix = $connection->getTablePrefix();
-
-        if (empty($prefix)) {
-            $prefix = 'tb_';
-        }
-
+        $prefix = !empty($connection->getTablePrefix()) ? '' : 'tb_';
+        
         if (is_null($project)) {
             return DB::table($prefix . 'users')
                 ->join($prefix . 'secret_user', $prefix . 'users.id', '=', $prefix . 'secret_user.user_id')
